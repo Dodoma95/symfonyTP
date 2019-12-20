@@ -1,0 +1,14 @@
+<div class="col-md-3">
+    <h3>Users List</h3>
+    <ul class="list-group">
+        {% for user in userList %}
+            <li class="list-group-item">
+                <a href="{{ path('post-by-user', {'id': user.id}) }}">
+                    {{ user.fullName }}</a>
+                <span class="badge badge-info badge-pill">
+                    {{ user.posts | length }}
+                </span>
+            </li>
+        {% endfor %}
+    </ul>
+</div>

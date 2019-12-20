@@ -1,0 +1,42 @@
+<div>
+    Il y a {{ postList.getTotalItemCount() }} résultats
+</div>
+
+<table class="table table-striped">
+    <tr>
+        <th>
+            {{ knp_pagination_sortable(postList, 'Id', 'a.id') }}
+        </th>
+        <th>Auteur</th>
+        <th>Message</th>
+        <th>Actions</th>
+    </tr>
+
+    {% for post in postList %}
+        <tr>
+            <td>
+                <a href="{{ path('post-details', {'id': post.id}) }}">
+                    {{ post.id }}
+                </a>
+            </td>
+            <td> {{ post.user.fullName }} </td>
+            <td> {{ post.message }}</td>
+            <td>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <a href="{{ path('post-delete', {'id': post.id}) }}">
+                        Supprimer
+                    </a>
+                {% endif %}
+                {% if is_granted('ROLE_USER') %}
+                    <a href="{{ path('post-edit', {'id': post.id}) }}">
+                        Edit
+                    </a>
+                {% endif %}
+            </td>
+        </tr>
+    {% endfor %}
+</table>
+
+<div class="navigation">
+    {{ knp_pagination_render(postList) }}
+</div>

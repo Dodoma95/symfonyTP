@@ -1,0 +1,40 @@
+<!doctype html>
+<div lang=fr></div>
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %} Forum {% endblock %}
+    </title>
+    {% block stylesheet %}
+        {{ encore_entry_link_tags('style') }}
+    {% endblock %}
+</head>
+
+<body class="container-fluid">
+
+{% include '_navbar.html.twig' %}
+
+{% if app.session.flashbag.peek('success') > 0 %}
+    <div class="row justify-content-center">
+        <div class="col-md-6 mt-5">
+            {% for message in app.flashes('success') %}
+                <div class="alert alert-success">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}
+
+<div class="row justify-content-center content">
+    <div class="col-md-8">
+        {%  block content %}{% endblock %}
+    </div>
+    {% block aside %}{% endblock %}
+</div>
+
+{% block js %}
+    {{ encore_entry_script_tags('app.js')}}
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,16 @@
+{% extends "layout.html.twig" %}
+
+{% block content %}
+
+    <h1>{{ message }}</h1>
+
+    <div class="card" style="width: 45rem;">
+        <img src="/assets/images/FORUM.jpg" class="card-img-top" alt="Image d'accueil">
+        <div class="card-body">
+            <h5 class="card-title">Welcome to the forum</h5>
+            <p class="card-text">Pour pouvoir laisser un post il vous faudra être identifié</p>
+            <a href="{{ path('security-login') }}" class="btn btn-primary">Go to connect or inscription</a>
+        </div>
+    </div>
+
+{% endblock %}

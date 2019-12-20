@@ -1,0 +1,19 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+
+    <section>
+        <article>
+            <h1>{{ post.id }}</h1>
+            <p>
+                le : {{ post.createdAt | date('d/m/Y') }}
+                par {{ post.user.fullName }}
+            </p>
+
+            <p>
+                {{ post.message }}
+            </p>
+        </article>
+    </section>
+
+{% endblock %}
